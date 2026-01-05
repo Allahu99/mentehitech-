@@ -27,3 +27,14 @@ def precos(request: Request):
 @app.get("/contato", response_class=HTMLResponse)
 def contato(request: Request):
     return templates.TemplateResponse("contato.html", {"request": request})
+from fastapi import Form
+from fastapi.responses import RedirectResponse
+
+@app.post("/contato")
+def enviar_contato(
+    nome: str = Form(...),
+    email: str = Form(...),
+    mensagem: str = Form(...)
+):
+    print("Novo contato:", nome, email, mensagem)
+    return RedirectResponse(url="/contato", status_code=303)
