@@ -1,15 +1,12 @@
 from fastapi import FastAPI, Request
-from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+import os
 
 app = FastAPI()
 
-# Pasta de arquivos estáticos (CSS, JS, imagens)
-app.mount("/static", StaticFiles(directory="static"), name="static")
-
-# Templates HTML
-templates = Jinja2Templates(directory="templates")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
 
 # Rotas
 @app.get("/", response_class=HTMLResponse)
