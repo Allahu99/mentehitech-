@@ -24,3 +24,6 @@ def servicos(request: Request):
 def precos(request: Request):
     return templates.TemplateResponse("precos.html", {"request": request})
 
+@app.get("/contato", response_class=HTMLResponse)
+def contato(request: Request):
+    return templates.TemplateResponse("contato.html", {"request": request})
