@@ -3,3 +3,8 @@ __pycache__/
 nohup.out
 fastapi.log
 backend-site.zip
+__pycache__/
+*.pyc
+*.log
+backend-site.zip
+nohup.out
