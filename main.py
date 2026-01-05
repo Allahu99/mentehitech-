@@ -1,39 +1,40 @@
-from fastapi import FastAPI, Form, Request
+from fastapi import FastAPI, Request, Form
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
 
-# Montar arquivos estáticos (CSS, JS)
+# Pasta de arquivos estáticos
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-# Templates (se você quiser usar jinja2)
-templates = Jinja2Templates(directory="public")
+# Templates
+templates = Jinja2Templates(directory="public")  # ou templates se você usa templates
 
-# Rotas GET para as páginas
+# Rotas GET
 @app.get("/", response_class=HTMLResponse)
-async def home(request: Request):
+def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 @app.get("/servicos", response_class=HTMLResponse)
-async def servicos(request: Request):
+def servicos(request: Request):
     return templates.TemplateResponse("servicos.html", {"request": request})
 
 @app.get("/precos", response_class=HTMLResponse)
-async def precos(request: Request):
+def precos(request: Request):
     return templates.TemplateResponse("precos.html", {"request": request})
 
 @app.get("/contato", response_class=HTMLResponse)
-async def contato(request: Request):
+def contato_get(request: Request):
     return templates.TemplateResponse("contato.html", {"request": request})
 
-# Rota POST para receber formulário de contato
+# Nova rota POST
 @app.post("/contato")
-async def receber_contato(
+def contato_post(
     nome: str = Form(...),
     email: str = Form(...),
     mensagem: str = Form(...)
 ):
-    print(f"Recebido: {nome}, {email}, {mensagem}")
+    # Aqui você pode salvar no banco ou enviar e-mail
+    print(f"Contato recebido: {nome}, {email}, {mensagem}")
     return JSONResponse({"status": "sucesso", "mensagem": "Contato recebido!"})
