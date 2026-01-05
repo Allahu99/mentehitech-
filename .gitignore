@@ -1,10 +1,29 @@
+# Cache do Python
 __pycache__/
 *.pyc
-nohup.out
-fastapi.log
-backend-site.zip
-__pycache__/
-*.pyc
+*.pyo
+*.pyd
+
+# Logs
 *.log
-backend-site.zip
 nohup.out
+
+# Arquivos de ambiente
+.env
+
+# Backup / ZIPs
+*.zip
+*.tar.gz
+
+# Editor / sistema
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Database local (se usar SQLite)
+*.sqlite3
+
+# Vercel / Render / node_modules (se algum dia tiver front JS)
+.vercel/
+node_modules/
