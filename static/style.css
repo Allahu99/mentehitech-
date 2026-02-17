@@ -194,3 +194,27 @@ footer {
 .whatsapp-float:hover {
     transform: scale(1.1);
 }
+body{
+background:#050505;
+font-family:Orbitron, sans-serif;
+}
+
+.gradient-text{
+background: linear-gradient(90deg,#00F0FF,#7B3FE4);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero{
+background: radial-gradient(circle at center,#0f0f2a,#050505);
+}
+
+.glow{
+box-shadow:0 0 20px rgba(0,240,255,0.5);
+}
+
+.header{
+background: rgba(5,5,5,0.7);
+backdrop-filter: blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
